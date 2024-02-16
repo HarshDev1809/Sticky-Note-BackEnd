@@ -63,7 +63,7 @@ exports.signIn = async(req,res)=>{
 }
 
 exports.verifyUser = (req,res)=>{
-    const token = req.headers['x-access-token'];
+    const {token} = req.body;
     if(!token){
         return res.status(400).send({message : "Token not proviede"});
     }else{
