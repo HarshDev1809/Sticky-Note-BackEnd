@@ -61,3 +61,26 @@ exports.signIn = async(req,res)=>{
         return res.send({message : "Something went wrong!"});
     }
 }
+
+exports.verifyUser = (req,res)=>{
+    const token = req.headers['x-access-token'];
+    if(!token){
+        return res.status(400).send({message : "Token not proviede"});
+    }else{
+        jwt.verify(token,SECRET,async(err,payload)=>{
+            if(err){
+                // return res.status(400).send({message : "User not Authenticated"});
+                return res.status(400).send(false)
+            }else{
+                const userName = payload.userName;
+                try{
+                    const user = await User.findOne({userName : payload.userName})
+                    req.user = user;
+                    return res.status(200).send(true);
+                }catch(err){
+                    return res.status(500).send({message : "Something went wrong!"});
+                }
+            }
+        });
+    }
+}
