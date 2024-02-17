@@ -72,3 +72,17 @@ exports.editNote = async(req,res)=>{
     }
 }
 
+exports.getNoteById = async(req,res)=>{
+    const noteId = req.params.id;
+    try{
+        const note = await Note.findById(noteId);
+        if(!note){
+            return res.status(400).send({message : "Note Not Found"});
+        }else{
+            return res.status(201).send(note);
+        }
+    }catch(err){
+        return res.status(500).send({message : "Something Went Wrong!"});
+    }
+}
+
