@@ -1,12 +1,12 @@
 const User = require("../Models/user.model");
 
 const verifySignUp = async(req,res,next)=>{
-    const {userName, firstName,emailId,password} = req.body;
+    const {userName, name,emailId,password} = req.body;
     if(!userName){
         return res.status(400).send({message : "Username Can't be Empty"});
     }
 
-    if(!firstName){
+    if(!name){
         return res.status(400).send({message : "Name Can't be Empty"});
     }
 
