@@ -4,22 +4,20 @@ const jwt = require("jsonwebtoken");
 const { SECRET } = require("../../configs/auth.config");
 
 exports.signUp = async(req,res)=>{
-    const {userName, firstName,emailId,password,lastName,notes} = req.body;
+    const {userName, name,emailId,password,notes} = req.body;
 
     try{
             const newPassword = bcrypt.hashSync(password,10);
             const newUser = new User({
                 userName : userName,
                 password : newPassword,
-                firstName : firstName,
-                lastName : lastName,
+                name : name,
                 emailId : emailId,
                 notes : notes
             });
 
             const nUser = await newUser.save();
             const token = jwt.sign({userName:userName}, SECRET, { expiresIn: '1h' });
-            const name = `${firstName} ${lastName}`;
             const response = {
                 userName : userName,
                 name : name,
