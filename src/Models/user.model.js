@@ -2,15 +2,9 @@ const mongoose = require("mongoose");
 const {userType} = require("../Utils/constants");
 
 const userSchema = mongoose.Schema({
-    firstName : {
+    name : {
         type : String,
         required : true,
-    },
-
-    lastName : {
-        type : String,
-        required : false,
-        default : "",
     },
 
     userName : {

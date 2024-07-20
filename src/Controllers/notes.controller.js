@@ -16,9 +16,10 @@ exports.createNewNote = async(req,res)=>{
         await user.save();
         return res.status(201).send(user);
     }catch(err){
-        return res.send(500).send({message : "something went wrong"})
+        console.log(err)
+        return res.status(500).send(err)
+        // return res.status(500).send({message : "something went wrong"})
     }
-
 }
 
 exports.getAllNotes = async(req,res)=>{

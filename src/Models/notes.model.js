@@ -20,8 +20,16 @@ const noteSchema = mongoose.Schema({
         type : Boolean,
         required : false,
         default : false,
+    },
+
+    isImportant : {
+        type : Boolean,
+        required : false,
+        default : false
     }
 });
+
+noteSchema.index({heading : 'text', body : 'text'})
 
 const Note = mongoose.model("notesData", noteSchema);
 
