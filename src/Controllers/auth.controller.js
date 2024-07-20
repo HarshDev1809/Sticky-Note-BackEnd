@@ -68,7 +68,6 @@ exports.verifyUser = (req, res) => {
   } else {
     jwt.verify(token, SECRET, async (err, payload) => {
       if (err) {
-        // return res.status(400).send({message : "User not Authenticated"});
         return res.status(400).send(false);
       } else {
         const userName = payload.userName;
