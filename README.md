@@ -20,4 +20,14 @@ This is a  backend for a React App, which is built using Express.JS and Node.JS,
     * **PUT /notes/edit/:id:** Edit an existing note by ID.
     * **DELETE /notes/delete/:id:** Delete a note by ID.
     * **GET /home/notes/:id:** Retrieve a single note by ID .
+* **Authorization**
+    * **POST /auth/signup:** User sign-up.
+    * **POST /auth/signin:** User sign-in.
+    * **POST /auth/verify:** Verify user.
+ 
+  # API LINK
+  https://api-stickynotes.onrender.com
+
+  # Frontend
+  **Frontend Repository Link:** https://github.com/HarshDev1809/Notes-App-Frontend
       
